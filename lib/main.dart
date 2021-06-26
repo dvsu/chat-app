@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/routes.dart';
 
-void main() {
-  runApp(ChatApp());
-}
+void main() => runApp(ChatApp());
 
 class ChatApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +12,7 @@ class ChatApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/welcome',
+      initialRoute: '/',
       routes: routes,
     );
   }

@@ -23,10 +23,8 @@ flutter:
 
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
+  assets:
+    - images/
 
   fonts:
     - family: KoHo
@@ -49,3 +47,6 @@ flutter:
           weight: 400
         - asset: fonts/KoHo-ExtraLight.ttf
           weight: 300
+    - family: Londrina Shadow
+      fonts:
+        - asset: fonts/LondrinaShadow-Regular.ttf
