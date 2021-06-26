@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class WelcomePage extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,12 +18,12 @@ class _WelcomePageState extends State<WelcomePage> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
-                ),
+                // Container(
+                //   child: Image.asset('images/logo.png'),
+                //   height: 60.0,
+                // ),
                 Text(
-                  'Flash Chat',
+                  'Chat App',
                   style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,

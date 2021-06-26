@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
 
-class ChatPage extends StatefulWidget {
+class ChatScreen extends StatefulWidget {
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
