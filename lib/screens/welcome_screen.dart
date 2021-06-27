@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -10,6 +11,18 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil().setWidth(MediaQuery.of(context).size.width);
+    ScreenUtil().setHeight(MediaQuery.of(context).size.height);
+
+    print(MediaQuery.of(context).size.width);
+    print(MediaQuery.of(context).size.height);
+    print('width ${ScreenUtil().screenWidth}');
+    print('height ${ScreenUtil().screenHeight}');
+    print(100.r);
+    print(100.h);
+    print(100.w);
+    print(1.sw);
+    print(1.sh);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -21,21 +34,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
-                flex: 3,
+                flex: 0.25.sh.toInt(),
                 child: Container(),
               ),
               Expanded(
-                flex: 3,
+                flex: 0.27.sh.toInt(),
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      flex: 2,
+                      flex: 4.r.toInt(),
                       child: Hero(
                         tag: 'app_icon',
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(10.0, 0.0, 15.0, 0.0),
+                          padding: EdgeInsets.fromLTRB(
+                              0.03.sw, 0.07.sh, 0.01.sw, 0.07.sh),
                           child: Container(
-                            alignment: Alignment.centerLeft,
+                            alignment: Alignment.center,
                             child: Image.asset(
                               'images/app_icon.png',
                               colorBlendMode: BlendMode.difference,
@@ -46,9 +60,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                     Expanded(
-                      flex: 5,
+                      flex: 6.r.toInt(),
                       child: Container(
-                        alignment: Alignment.center,
+                        alignment: Alignment.centerLeft,
                         child: Text(
                           'CHAT APP',
                           textAlign: TextAlign.left,
@@ -59,53 +73,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 48.0,
-              ),
               Expanded(
+                flex: 0.115.sh.toInt(),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
-                  child: Material(
-                    elevation: 5.0,
-                    color: Color(0xff6A2C70),
-                    borderRadius: BorderRadius.circular(30.0),
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      minWidth: 200.0,
-                      height: 42.0,
-                      child: Text(
-                        'LOG IN',
-                        style: loginButtonTextStyle,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 0.025.sh,
+                    horizontal: 0.025.sw,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      'LOG IN',
+                      style: loginButtonTextStyle,
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xff6A2C70),
                       ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30.r,
+                          ),
+                        ),
+                      ),
+                      elevation: MaterialStateProperty.all(5.0),
                     ),
                   ),
                 ),
               ),
               Expanded(
+                flex: 0.115.sh.toInt(),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
-                  child: Material(
-                    color: Color(0xffF08A5D),
-                    borderRadius: BorderRadius.circular(30.0),
-                    elevation: 5.0,
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/registration');
-                      },
-                      minWidth: 200.0,
-                      height: 42.0,
-                      child: Text(
-                        'REGISTER',
-                        style: registerButtonTextStyle,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 0.025.sh,
+                    horizontal: 0.025.sw,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/registration');
+                    },
+                    child: Text(
+                      'REGISTER',
+                      style: loginButtonTextStyle,
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xffB83B5E),
                       ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30.r,
+                          ),
+                        ),
+                      ),
+                      elevation: MaterialStateProperty.all(5.0),
                     ),
                   ),
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 0.25.sh.toInt(),
                 child: Container(),
               ),
             ],

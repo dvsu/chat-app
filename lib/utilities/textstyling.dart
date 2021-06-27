@@ -29,7 +29,7 @@ const TextStyle messageContainerTextStyle = TextStyle(
 
 const TextStyle welcomeScreenTitleTextStyle = TextStyle(
   fontFamily: 'Londrina Shadow',
-  fontSize: 75.0,
+  fontSize: 65.0,
   color: Color(0xff6A2C70),
 );
 

@@ -32,3 +32,45 @@ const BoxDecoration mainBackgroundDecoration = BoxDecoration(
     ],
   ),
 );
+
+const BoxDecoration registrationBackgroundDecoration = BoxDecoration(
+  gradient: RadialGradient(
+    radius: 2.5,
+    focal: Alignment(0.0, -1.9),
+    focalRadius: 0.6,
+    //center: Alignment(-0.5, -1.0),
+    colors: [
+      Color(0xeeF9ED69),
+      Color(0xeeF08A5D),
+      Color(0xeeB83B5E),
+      Color(0xee6A2C70),
+    ],
+    stops: [
+      -1.0,
+      0.2,
+      0.4,
+      0.5,
+    ],
+  ),
+);
+
+const BoxDecoration loginBackgroundDecoration = BoxDecoration(
+  gradient: RadialGradient(
+    radius: 2.5,
+    focal: Alignment(1.0, -1.9),
+    focalRadius: 0.6,
+    //center: Alignment(-0.5, -1.0),
+    colors: [
+      Color(0xeeF9ED69),
+      Color(0xeeF08A5D),
+      Color(0xeeB83B5E),
+      Color(0xee6A2C70),
+    ],
+    stops: [
+      -1.0,
+      0.2,
+      0.4,
+      0.55,
+    ],
+  ),
+);

@@ -13,7 +13,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        decoration: mainBackgroundDecoration,
+        decoration: registrationBackgroundDecoration,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
