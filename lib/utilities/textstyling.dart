@@ -35,7 +35,7 @@ const TextStyle welcomeScreenTitleTextStyle = TextStyle(
 
 const TextStyle registrationScreenTitleTextStyle = TextStyle(
   fontFamily: 'Londrina Shadow',
-  fontSize: 70.0,
+  fontSize: 65.0,
   fontWeight: FontWeight.w500,
 );
 

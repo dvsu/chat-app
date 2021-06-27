@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,82 +21,141 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                height: 200.0,
-                child: null, //Image.asset('images/logo.png'),
+              Expanded(
+                flex: 0.1.sh.toInt(),
+                child: Container(),
               ),
-              SizedBox(
-                height: 48.0,
-              ),
-              TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Enter your password.',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Material(
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                  elevation: 5.0,
-                  child: MaterialButton(
-                    onPressed: () {
-                      //Implement login functionality.
-                    },
-                    minWidth: 200.0,
-                    height: 42.0,
-                    child: Text(
-                      'Log In',
+              Expanded(
+                flex: 0.15.sh.toInt(),
+                child: Hero(
+                  tag: 'app_icon',
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      width: 100.0,
+                      alignment: Alignment.bottomCenter,
+                      child: Image.asset('images/app_icon.png'),
                     ),
                   ),
                 ),
+              ),
+              Expanded(
+                flex: 0.095.sh.toInt(),
+                child: Container(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    'CHAT APP',
+                    textAlign: TextAlign.center,
+                    style: registrationScreenTitleTextStyle,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 0.1.sh.toInt(),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    0.025.sw,
+                    0.03.sh,
+                    .025.sw,
+                    0.01.sh,
+                  ),
+                  child: TextField(
+                    onChanged: (value) {
+                      //Do something with the user input.
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Enter your email',
+                      filled: true,
+                      fillColor: Color(0xccfff8a1),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xffF08A5D), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xffB83B5E), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 0.1.sh.toInt(),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    0.025.sw,
+                    0.01.sh,
+                    .025.sw,
+                    0.03.sh,
+                  ),
+                  child: TextField(
+                    onChanged: (value) {
+                      //Do something with the user input.
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Enter your password',
+                      filled: true,
+                      fillColor: Color(0xccfff8a1),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xffF08A5D), width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xffB83B5E), width: 2.0),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 0.115.sh.toInt(),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 0.025.sh,
+                    horizontal: 0.025.sw,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      'LOG IN',
+                      style: loginButtonTextStyle,
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        Color(0xff6A2C70),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30.r,
+                          ),
+                        ),
+                      ),
+                      elevation: MaterialStateProperty.all(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 0.29.sh.toInt(),
+                child: Container(),
               ),
             ],
           ),

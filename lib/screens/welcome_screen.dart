@@ -13,16 +13,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     ScreenUtil().setWidth(MediaQuery.of(context).size.width);
     ScreenUtil().setHeight(MediaQuery.of(context).size.height);
-
-    print(MediaQuery.of(context).size.width);
-    print(MediaQuery.of(context).size.height);
-    print('width ${ScreenUtil().screenWidth}');
-    print('height ${ScreenUtil().screenHeight}');
-    print(100.r);
-    print(100.h);
-    print(100.w);
-    print(1.sw);
-    print(1.sh);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
