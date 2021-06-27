@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
+import 'package:chat_app/utilities/color_palette.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:chat_app/widgets/buttons.dart';
+import 'dart:math' as math;
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -21,15 +24,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     controller = AnimationController(
       duration: Duration(seconds: 1, milliseconds: 200),
       vsync: this,
-      lowerBound: 0.3,
-      upperBound: 0.9,
+      lowerBound: 0.1,
+      upperBound: 0.7,
     );
 
     animation = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     controller.forward();
     controller.addListener(() {
       setState(() {});
-      print(controller.value);
     });
   }
 
@@ -46,22 +48,23 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: RadialGradient(
-            radius: 3.2,
-            focal: Alignment(animation.value - 1.5, animation.value - 2.3),
-            focalRadius: 0.3,
+          gradient: SweepGradient(
+            center: Alignment(-1.1, -1.1),
+            startAngle: 0,
+            endAngle: (math.pi * animation.value) + 20.0,
+
             //center: Alignment(-0.5, -1.0),
             colors: [
-              Color(0xddF9ED69).withOpacity(animation.value),
-              Color(0xddF08A5D).withOpacity((animation.value / 3) + 0.6),
-              Color(0xeeB83B5E).withOpacity((animation.value / 2) + 0.5),
-              Color(0xff6A2C70),
+              Color(0x77fffbd1).withOpacity(animation.value),
+              Color(0x77ffcfba).withOpacity(animation.value),
+              Color(0x77ffc7d7).withOpacity(animation.value),
+              //Color(0xbb6A2C70),
             ],
             stops: [
-              animation.value - 1.0,
-              (animation.value / 3.5) - 0.12,
-              (animation.value / 15) + 0.22,
-              (animation.value / 30) + 0.38,
+              0.00,
+              0.03,
+              0.07,
+              //0.15,
             ],
           ),
         ),
@@ -80,12 +83,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      flex: 4.r.toInt(),
+                      flex: 0.3.sw.toInt(),
                       child: Hero(
                         tag: 'app_icon',
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(
-                              0.03.sw, 0.07.sh, 0.01.sw, 0.07.sh),
+                              0.05.sw, 0.06.sh, 0.03.sw, 0.04.sh),
                           child: Container(
                             alignment: Alignment.center,
                             child: Image.asset(
@@ -98,14 +101,31 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                     Expanded(
-                      flex: 6.r.toInt(),
+                      flex: 0.7.sw.toInt(),
                       child: Container(
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                          'CHAT APP',
-                          textAlign: TextAlign.left,
-                          style: welcomeScreenTitleTextStyle,
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            ColorizeAnimatedText(
+                              'CHAT APP',
+                              textAlign: TextAlign.center,
+                              textStyle: welcomeScreenTitleTextStyle,
+                              colors: titleGradientColor,
+                              speed: Duration(milliseconds: 800),
+                            ),
+                          ],
+                          //isRepeatingAnimation: true,
+                          onTap: () {
+                            print("Tap Event");
+                          },
+                          totalRepeatCount: 1,
                         ),
+
+                        // Text(
+                        //   'CHAT APP',
+                        //   textAlign: TextAlign.center,
+                        //   style: welcomeScreenTitleTextStyle,
+                        // ),
                       ),
                     ),
                   ],

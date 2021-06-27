@@ -4,55 +4,57 @@ import 'package:flutter/material.dart';
 
 const TextStyle loginButtonTextStyle = TextStyle(
     color: Color(0xffffffff),
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     fontSize: 17.0,
-    fontFamily: 'KoHo');
+    fontFamily: 'MiriamLibre');
 
 const TextStyle registerButtonTextStyle = TextStyle(
     color: Color(0xffffffff),
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     fontSize: 17.0,
-    fontFamily: 'KoHo');
+    fontFamily: 'MiriamLibre');
 
 const TextStyle hintTextStyle = TextStyle(
-    color: Color(0xff565656),
-    fontWeight: FontWeight.w500,
-    fontSize: 17.0,
-    fontFamily: 'KoHo');
+  color: Color(0xff565656),
+  //fontWeight: FontWeight.bold,
+  fontSize: 15.0,
+  fontFamily: 'MiriamLibre',
+);
 
 const TextStyle textFieldTextStyle = TextStyle(
     color: Color(0xff272727),
-    fontWeight: FontWeight.w500,
-    fontSize: 16.0,
-    fontFamily: 'KoHo');
+    //fontWeight: FontWeight.bold,
+    fontSize: 15.0,
+    fontFamily: 'MiriamLibre');
 
 const TextStyle sendButtonTextStyle = TextStyle(
     color: Colors.lightBlueAccent,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.bold,
     fontSize: 18.0,
-    fontFamily: 'KoHo');
+    fontFamily: 'MiriamLibre');
 
 const TextStyle messageContainerTextStyle = TextStyle(
-  fontFamily: 'KoHo',
+  fontFamily: 'MiriamLibre',
   fontSize: 18.0,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.bold,
   color: Colors.black,
 );
 
 const TextStyle welcomeScreenTitleTextStyle = TextStyle(
-  fontFamily: 'Londrina Shadow',
-  fontSize: 65.0,
-  color: Color(0xff6A2C70),
+  fontFamily: 'SirinStencil',
+  fontSize: 60.0,
+  fontWeight: FontWeight.bold,
 );
 
 const TextStyle registrationScreenTitleTextStyle = TextStyle(
-  fontFamily: 'Londrina Shadow',
-  fontSize: 65.0,
-  fontWeight: FontWeight.w500,
+  fontFamily: 'SirinStencil',
+  fontSize: 45.0,
+  fontWeight: FontWeight.bold,
+  color: Color(0xffffffff),
 );
 
 const TextStyle loginScreenTitleTextStyle = TextStyle(
-  fontFamily: 'Londrina Shadow',
-  fontSize: 80.0,
+  fontFamily: 'SirinStencil',
+  fontSize: 45.0,
   fontWeight: FontWeight.bold,
 );

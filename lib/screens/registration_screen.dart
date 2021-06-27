@@ -59,9 +59,9 @@ class _RegistrationScreenState extends State<RegistrationScreen>
             ],
             stops: [
               animation.value - 1.0,
-              (animation.value / 3.5) - 0.12,
-              (animation.value / 15) + 0.22,
-              (animation.value / 30) + 0.38,
+              (animation.value / 3.2) - 0.16,
+              (animation.value / 15) + 0.2,
+              (animation.value / 30) + 0.35,
             ],
           ),
         ),
@@ -72,7 +72,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
-                flex: 0.1.sh.toInt(),
+                flex: 0.15.sh.toInt(),
                 child: Container(),
               ),
               Expanded(
@@ -114,26 +114,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                     onChanged: (value) {
                       //Do something with the user input.
                     },
-                    decoration: InputDecoration(
-                      hintText: 'Enter your email',
-                      filled: true,
-                      fillColor: Color(0xccfff8a1),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Color(0xffF08A5D), width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Color(0xff6A2C70), width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
+                    decoration: emailInputDecoration,
                   ),
                 ),
               ),
@@ -152,27 +133,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                     onChanged: (value) {
                       //Do something with the user input.
                     },
-                    decoration: InputDecoration(
-                      hintText: 'Enter your password',
-                      hintStyle: hintTextStyle,
-                      filled: true,
-                      fillColor: Color(0xccfff8a1),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Color(0xffF08A5D), width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Color(0xff6A2C70), width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
+                    decoration: passwordInputDecoration,
                   ),
                 ),
               ),
