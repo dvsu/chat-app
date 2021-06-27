@@ -49,7 +49,7 @@ const TextStyle welcomeScreenTitleTextStyle = TextStyle(
 const TextStyle registrationScreenTitleTextStyle = TextStyle(
   fontFamily: 'SirinStencil',
   fontSize: 45.0,
-  fontWeight: FontWeight.bold,
+  //fontWeight: FontWeight.bold,
   color: Color(0xffffffff),
 );
 

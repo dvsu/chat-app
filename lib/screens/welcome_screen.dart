@@ -83,12 +83,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      flex: 0.3.sw.toInt(),
+                      flex: 0.4.sw.toInt(),
                       child: Hero(
                         tag: 'app_icon',
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(
-                              0.05.sw, 0.06.sh, 0.03.sw, 0.04.sh),
+                              0.0.sw, 0.08.sh, 0.00.sw, 0.06.sh),
                           child: Container(
                             alignment: Alignment.center,
                             child: Image.asset(
@@ -101,14 +101,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                     Expanded(
-                      flex: 0.7.sw.toInt(),
+                      flex: 0.6.sw.toInt(),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: AnimatedTextKit(
                           animatedTexts: [
                             ColorizeAnimatedText(
-                              'CHAT APP',
-                              textAlign: TextAlign.center,
+                              'chat app',
+                              textAlign: TextAlign.left,
                               textStyle: welcomeScreenTitleTextStyle,
                               colors: titleGradientColor,
                               speed: Duration(milliseconds: 800),
@@ -120,12 +120,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           },
                           totalRepeatCount: 1,
                         ),
-
-                        // Text(
-                        //   'CHAT APP',
-                        //   textAlign: TextAlign.center,
-                        //   style: welcomeScreenTitleTextStyle,
-                        // ),
                       ),
                     ),
                   ],

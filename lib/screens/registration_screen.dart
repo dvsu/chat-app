@@ -29,7 +29,6 @@ class _RegistrationScreenState extends State<RegistrationScreen>
     controller.forward();
     controller.addListener(() {
       setState(() {});
-      print(controller.value);
     });
   }
 
@@ -66,98 +65,119 @@ class _RegistrationScreenState extends State<RegistrationScreen>
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                flex: 0.15.sh.toInt(),
-                child: Container(),
+          padding: EdgeInsets.symmetric(horizontal: 0.05.sw, vertical: 0.1.sh),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0x55ffffff),
+                  Color(0x0affffff),
+                ],
               ),
-              Expanded(
-                flex: 0.15.sh.toInt(),
-                child: Hero(
-                  tag: 'app_icon',
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      width: 100.0,
-                      alignment: Alignment.bottomCenter,
-                      child: Image.asset('images/app_icon.png'),
+              borderRadius: BorderRadius.circular(0.05.sw),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x22121212),
+                  offset: Offset(0, 2),
+                  blurRadius: 1.0,
+                  spreadRadius: 2.0,
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  flex: 0.05.sh.toInt(),
+                  child: Container(),
+                ),
+                Expanded(
+                  flex: 0.15.sh.toInt(),
+                  child: Hero(
+                    tag: 'app_icon',
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        width: 100.0,
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset('images/app_icon.png'),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 0.095.sh.toInt(),
-                child: Container(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    'CHAT APP',
-                    textAlign: TextAlign.center,
-                    style: registrationScreenTitleTextStyle,
+                Expanded(
+                  flex: 0.095.sh.toInt(),
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      'chat app',
+                      textAlign: TextAlign.center,
+                      style: registrationScreenTitleTextStyle,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 0.1.sh.toInt(),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    0.025.sw,
-                    0.03.sh,
-                    .025.sw,
-                    0.01.sh,
-                  ),
-                  child: TextField(
-                    style: textFieldTextStyle,
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: emailInputDecoration,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 0.1.sh.toInt(),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    0.025.sw,
-                    0.01.sh,
-                    .025.sw,
-                    0.03.sh,
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    style: textFieldTextStyle,
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: passwordInputDecoration,
+                Expanded(
+                  flex: 0.1.sh.toInt(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 0.07.sw,
+                      vertical: 0.01.sh,
+                    ),
+                    child: TextField(
+                      style: textFieldTextStyle,
+                      onChanged: (value) {
+                        //Do something with the user input.
+                      },
+                      decoration: registrationInputDecoration.copyWith(
+                        hintText: 'Enter your email',
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 0.115.sh.toInt(),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 0.025.sh,
-                    horizontal: 0.025.sw,
-                  ),
-                  child: CustomElevatedButton(
-                    buttonText: 'REGISTER',
-                    color: Color(0xffF08A5D),
-                    onPress: () {
-                      Navigator.pushNamed(context, '/registration');
-                    },
+                Expanded(
+                  flex: 0.1.sh.toInt(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 0.07.sw,
+                      vertical: 0.01.sh,
+                    ),
+                    child: TextField(
+                      obscureText: true,
+                      style: textFieldTextStyle,
+                      onChanged: (value) {
+                        //Do something with the user input.
+                      },
+                      decoration: registrationInputDecoration.copyWith(
+                        hintText: 'Enter your password',
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 0.29.sh.toInt(),
-                child: Container(),
-              ),
-            ],
+                Expanded(
+                  flex: 0.115.sh.toInt(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 0.025.sh,
+                      horizontal: 0.07.sw,
+                    ),
+                    child: CustomElevatedButton(
+                      buttonText: 'REGISTER',
+                      color: Color(0xffF08A5D),
+                      onPress: () {
+                        Navigator.pushNamed(context, '/registration');
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 0.19.sh.toInt(),
+                  child: Container(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
