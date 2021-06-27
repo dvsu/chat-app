@@ -127,6 +127,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                       vertical: 0.01.sh,
                     ),
                     child: TextField(
+                      keyboardType: TextInputType.emailAddress,
                       style: textFieldTextStyle,
                       onChanged: (value) {
                         //Do something with the user input.
