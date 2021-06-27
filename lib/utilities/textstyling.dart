@@ -14,6 +14,18 @@ const TextStyle registerButtonTextStyle = TextStyle(
     fontSize: 17.0,
     fontFamily: 'KoHo');
 
+const TextStyle hintTextStyle = TextStyle(
+    color: Color(0xff565656),
+    fontWeight: FontWeight.w500,
+    fontSize: 17.0,
+    fontFamily: 'KoHo');
+
+const TextStyle textFieldTextStyle = TextStyle(
+    color: Color(0xff272727),
+    fontWeight: FontWeight.w500,
+    fontSize: 16.0,
+    fontFamily: 'KoHo');
+
 const TextStyle sendButtonTextStyle = TextStyle(
     color: Colors.lightBlueAccent,
     fontWeight: FontWeight.w700,

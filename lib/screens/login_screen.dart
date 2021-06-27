@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
+import 'package:chat_app/widgets/buttons.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -129,27 +130,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     vertical: 0.025.sh,
                     horizontal: 0.025.sw,
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {
+                  child: CustomElevatedButton(
+                    buttonText: 'LOG IN',
+                    color: Color(0xff6A2C70),
+                    onPress: () {
                       Navigator.pushNamed(context, '/login');
                     },
-                    child: Text(
-                      'LOG IN',
-                      style: loginButtonTextStyle,
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        Color(0xff6A2C70),
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            30.r,
-                          ),
-                        ),
-                      ),
-                      elevation: MaterialStateProperty.all(5.0),
-                    ),
                   ),
                 ),
               ),
