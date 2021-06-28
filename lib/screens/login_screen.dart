@@ -1,8 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
 import 'package:chat_app/widgets/buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,9 +12,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Container(
         decoration: loginBackgroundDecoration,
@@ -82,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                       style: textFieldTextStyle,
                       onChanged: (value) {
-                        //Do something with the user input.
+                        email = value;
                       },
                       decoration: registrationInputDecoration.copyWith(
                         hintText: 'Enter your email',
@@ -101,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       style: textFieldTextStyle,
                       onChanged: (value) {
-                        //Do something with the user input.
+                        password = value;
                       },
                       decoration: registrationInputDecoration.copyWith(
                         hintText: 'Enter your password',
@@ -119,8 +126,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: CustomElevatedButton(
                       buttonText: 'LOG IN',
                       color: Color(0xff6A2C70),
-                      onPress: () {
-                        Navigator.pushNamed(context, '/login');
+                      onPress: () async {
+                        try {
+                          await _auth
+                              .signInWithEmailAndPassword(
+                                  email: email, password: password)
+                              .then((value) {
+                            Navigator.pushNamed(context, '/chat');
+                          });
+                        } catch (e) {
+                          print(e);
+                        }
                       },
                     ),
                   ),
