@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:chat_app/utilities/textstyling.dart';
 import 'package:chat_app/utilities/decoration.dart';
 import 'package:chat_app/widgets/buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -13,6 +14,9 @@ class _RegistrationScreenState extends State<RegistrationScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation animation;
+  late String email;
+  late String password;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -130,7 +134,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                       keyboardType: TextInputType.emailAddress,
                       style: textFieldTextStyle,
                       onChanged: (value) {
-                        //Do something with the user input.
+                        email = value;
                       },
                       decoration: registrationInputDecoration.copyWith(
                         hintText: 'Enter your email',
@@ -149,7 +153,7 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                       obscureText: true,
                       style: textFieldTextStyle,
                       onChanged: (value) {
-                        //Do something with the user input.
+                        password = value;
                       },
                       decoration: registrationInputDecoration.copyWith(
                         hintText: 'Enter your password',
@@ -167,8 +171,17 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                     child: CustomElevatedButton(
                       buttonText: 'REGISTER',
                       color: Color(0xffF08A5D),
-                      onPress: () {
-                        Navigator.pushNamed(context, '/registration');
+                      onPress: () async {
+                        try {
+                          await _auth
+                              .createUserWithEmailAndPassword(
+                                  email: email, password: password)
+                              .then((value) {
+                            Navigator.pushNamed(context, '/chat');
+                          });
+                        } catch (e) {
+                          print(e);
+                        }
                       },
                     ),
                   ),

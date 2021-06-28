@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(ChatApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(ChatApp());
+}
 
 class ChatApp extends StatelessWidget {
   @override

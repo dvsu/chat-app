@@ -46,6 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     ScreenUtil().setWidth(MediaQuery.of(context).size.width);
     ScreenUtil().setHeight(MediaQuery.of(context).size.height);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           gradient: SweepGradient(
