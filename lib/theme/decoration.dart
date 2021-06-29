@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app/utilities/textstyling.dart';
+import 'package:chat_app/theme/textstyling.dart';
 
 const InputDecoration messageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),

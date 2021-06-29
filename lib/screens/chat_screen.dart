@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app/utilities/textstyling.dart';
-import 'package:chat_app/utilities/decoration.dart';
+import 'package:chat_app/theme/textstyling.dart';
+import 'package:chat_app/theme/decoration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatScreen extends StatefulWidget {

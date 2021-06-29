@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:chat_app/utilities/textstyling.dart';
-import 'package:chat_app/utilities/decoration.dart';
+import 'package:chat_app/theme/textstyling.dart';
+import 'package:chat_app/theme/decoration.dart';
 import 'package:chat_app/widgets/buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chat_app/widgets/dialogs.dart';
+import 'package:chat_app/utilities/string_extension.dart';
 
 class RegistrationScreen extends StatefulWidget {
   @override
@@ -16,7 +18,6 @@ class _RegistrationScreenState extends State<RegistrationScreen>
   late Animation animation;
   late String email;
   late String password;
-  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -173,14 +174,23 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                       color: Color(0xffF08A5D),
                       onPress: () async {
                         try {
-                          await _auth
+                          await FirebaseAuth.instance
                               .createUserWithEmailAndPassword(
-                                  email: email, password: password)
-                              .then((value) {
-                            Navigator.pushNamed(context, '/chat');
-                          });
-                        } catch (e) {
-                          print(e);
+                                  email: email, password: password);
+                          Navigator.pushNamed(context, '/chat');
+                        } on FirebaseAuthException catch (e) {
+                          showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) =>
+                                  CustomAlertDialog(
+                                    title: e.code
+                                        .replaceAll(RegExp('-'), ' ')
+                                        .capitalize(),
+                                    content: e.message,
+                                  ));
+                          print('Failed with error code: ${e.code}');
+                          print(e.message);
                         }
                       },
                     ),
