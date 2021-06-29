@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:chat_app/theme/textstyling.dart';
 
 class CustomMessageContainer extends StatelessWidget {
   CustomMessageContainer({required this.message, required this.sender});
@@ -57,9 +58,7 @@ class CustomMessageContainer extends StatelessWidget {
                 Text(
                   message,
                   textAlign: TextAlign.end,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: messageContainerTextStyle,
                 ),
               ],
             ),
@@ -69,7 +68,7 @@ class CustomMessageContainer extends StatelessWidget {
           ),
           CircleAvatar(
             radius: 0.06.sw,
-            backgroundColor: Color(0xddF08A5D),
+            backgroundColor: Color(0xee6A2C70),
             child: Text(
               sender[0].toUpperCase(),
               style: TextStyle(

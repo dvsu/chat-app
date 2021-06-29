@@ -4,38 +4,27 @@ const TextStyle loginButtonTextStyle = TextStyle(
     color: Color(0xffffffff),
     fontWeight: FontWeight.bold,
     fontSize: 17.0,
-    fontFamily: 'MiriamLibre');
+    fontFamily: 'Barlow');
 
 const TextStyle registerButtonTextStyle = TextStyle(
     color: Color(0xffffffff),
     fontWeight: FontWeight.bold,
     fontSize: 17.0,
-    fontFamily: 'MiriamLibre');
+    fontFamily: 'Barlow');
 
 const TextStyle hintTextStyle = TextStyle(
   color: Color(0xff565656),
   //fontWeight: FontWeight.bold,
-  fontSize: 15.0,
-  fontFamily: 'MiriamLibre',
+  fontSize: 16.0,
+  fontFamily: 'Barlow',
 );
 
 const TextStyle textFieldTextStyle = TextStyle(
-    color: Color(0xff272727),
-    //fontWeight: FontWeight.bold,
-    fontSize: 15.0,
-    fontFamily: 'MiriamLibre');
-
-const TextStyle sendButtonTextStyle = TextStyle(
-    color: Colors.lightBlueAccent,
-    fontWeight: FontWeight.bold,
-    fontSize: 18.0,
-    fontFamily: 'MiriamLibre');
-
-const TextStyle messageContainerTextStyle = TextStyle(
-  fontFamily: 'MiriamLibre',
-  fontSize: 18.0,
-  fontWeight: FontWeight.bold,
-  color: Colors.black,
+  color: Color(0xff272727),
+  //fontWeight: FontWeight.bold,
+  fontSize: 16.0,
+  fontFamily: 'Barlow',
+  fontWeight: FontWeight.w500,
 );
 
 const TextStyle welcomeScreenTitleTextStyle = TextStyle(
@@ -62,17 +51,42 @@ const TextStyle alertDialogTitleTextStyle = TextStyle(
   color: Color(0xff121212),
   fontWeight: FontWeight.bold,
   fontSize: 17.0,
-  fontFamily: 'MiriamLibre',
+  fontFamily: 'Barlow',
 );
 
 const TextStyle alertDialogContentTextStyle = TextStyle(
   color: Color(0xff121212),
   fontSize: 17.0,
-  fontFamily: 'MiriamLibre',
+  fontFamily: 'Barlow',
 );
 
 const TextStyle alertDialogButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
   fontSize: 17.0,
-  fontFamily: 'MiriamLibre',
+  fontFamily: 'Barlow',
+);
+
+/////////////////////////////////////////////////////////
+// Chat Screen
+/////////////////////////////////////////////////////////
+
+const TextStyle messageTextFieldTextStyle = TextStyle(
+  fontFamily: 'Barlow',
+  fontSize: 18.0,
+  fontWeight: FontWeight.w500,
+  color: Colors.black,
+);
+
+const TextStyle messageContainerTextStyle = TextStyle(
+  fontFamily: 'Barlow',
+  fontSize: 15.0,
+  fontWeight: FontWeight.w400,
+  color: Colors.white,
+);
+
+const TextStyle receiverNameTextStyle = TextStyle(
+  fontFamily: 'Barlow',
+  fontSize: 25.0,
+  fontWeight: FontWeight.w500,
+  color: Colors.white,
 );
