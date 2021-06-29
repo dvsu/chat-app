@@ -77,11 +77,18 @@ const TextStyle messageTextFieldTextStyle = TextStyle(
   color: Colors.black,
 );
 
-const TextStyle messageContainerTextStyle = TextStyle(
+const TextStyle senderMessageContainerTextStyle = TextStyle(
   fontFamily: 'Barlow',
   fontSize: 15.0,
   fontWeight: FontWeight.w400,
   color: Colors.white,
+);
+
+const TextStyle receiverMessageContainerTextStyle = TextStyle(
+  fontFamily: 'Barlow',
+  fontSize: 15.0,
+  fontWeight: FontWeight.w400,
+  color: Colors.black,
 );
 
 const TextStyle receiverNameTextStyle = TextStyle(

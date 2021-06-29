@@ -9,6 +9,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:chat_app/screens/chat_screen/widgets/message_containers.dart';
 
 final _firestore = FirebaseFirestore.instance;
+final _auth = FirebaseAuth.instance;
+User? user = _auth.currentUser;
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -16,10 +18,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final _auth = FirebaseAuth.instance;
   final messageTextController = TextEditingController();
   final ScrollController messageScrollController = ScrollController();
-  late User userName;
+  late User currentUser;
   late String message;
 
   @override
@@ -30,10 +31,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void getCurrentUser() {
     try {
-      final User? user = _auth.currentUser;
+      user = _auth.currentUser;
       print(user);
       if (user != null) {
-        userName = user;
+        currentUser = user!;
       }
     } catch (e) {
       print(e);
@@ -43,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Future<void> sendMessage(String message) {
     CollectionReference messages = _firestore.collection('messages');
     return messages
-        .add({'sender': userName.email, 'text': message}).then((value) {
+        .add({'sender': currentUser.email, 'text': message}).then((value) {
       print("Message sent");
     }).catchError((e) {
       print('$e');
@@ -140,6 +141,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         flex: 0.9.sh.toInt(),
                         child: MessageStream(
                           controller: messageScrollController,
+                          currentUser: currentUser,
                         ),
                       ),
                     ],
@@ -205,9 +207,10 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessageStream extends StatelessWidget {
-  MessageStream({required this.controller});
+  MessageStream({required this.controller, required this.currentUser});
 
   final ScrollController controller;
+  final User currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -231,6 +234,7 @@ class MessageStream extends StatelessWidget {
               return CustomMessageContainer(
                 message: data['text'],
                 sender: data['sender'],
+                currentUserEmail: currentUser.email ?? '',
               );
             }).toList(),
           );
