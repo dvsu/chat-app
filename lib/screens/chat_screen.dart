@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:chat_app/screens/chat_screen/widgets/message_containers.dart';
+import 'package:chat_app/utilities/datetime_formatter.dart';
 
 final _firestore = FirebaseFirestore.instance;
 final _auth = FirebaseAuth.instance;
@@ -21,7 +22,10 @@ class _ChatScreenState extends State<ChatScreen> {
   final messageTextController = TextEditingController();
   final ScrollController messageScrollController = ScrollController();
   late User currentUser;
-  late String message;
+  String message = '';
+  bool messageStateChanged = false;
+  bool messageBeforeIsEmpty = true;
+  bool messageNowIsEmpty = true;
 
   @override
   void initState() {
@@ -43,8 +47,12 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<void> sendMessage(String message) {
     CollectionReference messages = _firestore.collection('messages');
-    return messages
-        .add({'sender': currentUser.email, 'text': message}).then((value) {
+
+    return messages.add({
+      'sender': currentUser.email,
+      'text': message,
+      'timestamp': DateTime.now()
+    }).then((value) {
       print("Message sent");
     }).catchError((e) {
       print('$e');
@@ -156,7 +164,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Expanded(
-                        flex: 0.85.sw.toInt(),
+                        flex:
+                            (message == '') ? 1.0.sw.toInt() : 0.85.sw.toInt(),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextField(
@@ -165,35 +174,53 @@ class _ChatScreenState extends State<ChatScreen> {
                             controller: messageTextController,
                             onChanged: (value) {
                               message = value;
+                              if (value.isNotEmpty) {
+                                messageNowIsEmpty = false;
+                              } else {
+                                messageNowIsEmpty = true;
+                              }
+                              messageStateChanged =
+                                  (messageBeforeIsEmpty != messageNowIsEmpty);
+                              messageBeforeIsEmpty = messageNowIsEmpty;
+                              if (messageStateChanged == true) {
+                                setState(() {});
+                              }
                             },
                             decoration: messageTextFieldDecoration,
                             style: messageTextFieldTextStyle,
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 0.15.sw.toInt(),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            messageTextController.clear();
-                            messageScrollController.jumpTo(
-                                messageScrollController
-                                    .position.maxScrollExtent);
-                            await sendMessage(message);
-                          },
-                          child: Icon(
-                            Icons.send_rounded,
-                            color: Color(0xee6A2C70),
-                            size: 0.07.sw,
-                          ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.transparent),
-                            shadowColor:
-                                MaterialStateProperty.all(Colors.transparent),
-                          ),
-                        ),
-                      ),
+                      (message == '')
+                          ? Container()
+                          : Expanded(
+                              flex: 0.15.sw.toInt(),
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  messageTextController.clear();
+                                  messageScrollController.jumpTo(
+                                      messageScrollController
+                                          .position.maxScrollExtent);
+                                  await sendMessage(message);
+                                  messageStateChanged = false;
+                                  messageNowIsEmpty = true;
+                                  messageBeforeIsEmpty = true;
+                                  message = '';
+                                  setState(() {});
+                                },
+                                child: Icon(
+                                  Icons.send_rounded,
+                                  color: Color(0xee6A2C70),
+                                  size: 0.07.sw,
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                  shadowColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),
@@ -215,7 +242,10 @@ class MessageStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore
+          .collection('messages')
+          .orderBy('timestamp', descending: false)
+          .snapshots(),
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
         if (!snapshot.hasData) {
@@ -226,15 +256,19 @@ class MessageStream extends StatelessWidget {
           return ListView(
             controller: controller,
             shrinkWrap: true,
+            reverse: true,
             padding:
                 EdgeInsets.symmetric(horizontal: 0.01.sw, vertical: 0.05.sw),
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+            children:
+                snapshot.data!.docs.reversed.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
                   document.data() as Map<String, dynamic>;
               return CustomMessageContainer(
                 message: data['text'],
                 sender: data['sender'],
                 currentUserEmail: currentUser.email ?? '',
+                time: DateTimeParser()
+                    .datetimeToStringTime(data['timestamp'].toDate()),
               );
             }).toList(),
           );

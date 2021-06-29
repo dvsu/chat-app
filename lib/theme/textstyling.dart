@@ -91,6 +91,13 @@ const TextStyle receiverMessageContainerTextStyle = TextStyle(
   color: Colors.black,
 );
 
+const TextStyle timeMessageContainerTextStyle = TextStyle(
+  fontFamily: 'Barlow',
+  fontSize: 13.0,
+  fontWeight: FontWeight.w400,
+  color: Color(0xeeB83B5E),
+);
+
 const TextStyle receiverNameTextStyle = TextStyle(
   fontFamily: 'Barlow',
   fontSize: 25.0,

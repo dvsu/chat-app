@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:chat_app/theme/textstyling.dart';
-import 'package:chat_app/theme/color_palette.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomElevatedButton extends StatelessWidget {
