@@ -6,7 +6,8 @@ const InputDecoration messageTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  hintText: 'Type your message here...',
+  hintText: 'Type your message here',
+  hintStyle: hintTextStyle,
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.transparent, width: 1.0),
     borderRadius: BorderRadius.all(Radius.circular(32.0)),

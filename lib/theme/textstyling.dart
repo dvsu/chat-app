@@ -12,21 +12,6 @@ const TextStyle registerButtonTextStyle = TextStyle(
     fontSize: 17.0,
     fontFamily: 'Barlow');
 
-const TextStyle hintTextStyle = TextStyle(
-  color: Color(0xff565656),
-  //fontWeight: FontWeight.bold,
-  fontSize: 16.0,
-  fontFamily: 'Barlow',
-);
-
-const TextStyle textFieldTextStyle = TextStyle(
-  color: Color(0xff272727),
-  //fontWeight: FontWeight.bold,
-  fontSize: 16.0,
-  fontFamily: 'Barlow',
-  fontWeight: FontWeight.w500,
-);
-
 const TextStyle welcomeScreenTitleTextStyle = TextStyle(
   fontFamily: 'SirinStencil',
   fontSize: 60.0,
@@ -46,7 +31,29 @@ const TextStyle loginScreenTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-// Alert Dialogs
+/////////////////////////////////////////////////////////
+// Text fields
+/////////////////////////////////////////////////////////
+
+const TextStyle hintTextStyle = TextStyle(
+  color: Color(0xff565656),
+  //fontWeight: FontWeight.bold,
+  fontSize: 15.0,
+  fontFamily: 'Barlow',
+);
+
+const TextStyle textFieldTextStyle = TextStyle(
+  color: Color(0xff272727),
+  //fontWeight: FontWeight.bold,
+  fontSize: 16.0,
+  fontFamily: 'Barlow',
+  fontWeight: FontWeight.w500,
+);
+
+/////////////////////////////////////////////////////////
+// Alert Dialog
+/////////////////////////////////////////////////////////
+
 const TextStyle alertDialogTitleTextStyle = TextStyle(
   color: Color(0xff121212),
   fontWeight: FontWeight.bold,
