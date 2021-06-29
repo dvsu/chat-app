@@ -2,15 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:chat_app/theme/textstyling.dart';
 
 const InputDecoration messageTextFieldDecoration = InputDecoration(
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+  ),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Type your message here...',
-  border: InputBorder.none,
+  enabledBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+  ),
+  filled: true,
+  fillColor: Color(0xffffffff),
 );
 
 const BoxDecoration messageContainerDecoration = BoxDecoration(
-  border: Border(
-    top: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-  ),
+  color: Color(0x10121212),
+  // border: Border(
+  //   top: BorderSide(width: 2.0),
+  // ),
 );
 
 const InputDecoration registrationInputDecoration = InputDecoration(
